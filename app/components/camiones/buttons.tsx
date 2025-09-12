@@ -16,24 +16,10 @@ export function AddCamion () {
 export function UpdateCamion({ id }: { id: string }) {
   return (
     <Link
-      href={`/dashboard/camiones/${id}/edit<r`}
+      href={`/dashboard/camiones/${id}/editar`}
       className="rounded-md border p-2 hover:bg-indigo-800"
     >
       <PencilIcon className="w-5" />
     </Link>
-  );
-}
-
-export function DeleteCamion({ id }: { id: string }) {
-
-  //const deleteCamionWithId = deleteCamion.bind(null, id);
-
-  return (
-    <form>
-      <button type="submit" className="rounded-md border p-2 hover:bg-indigo-800">
-        <span className="sr-only">Eliminar</span>
-        <TrashIcon className="w-5" />
-      </button>
-    </form>
   );
 }
