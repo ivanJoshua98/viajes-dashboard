@@ -7,7 +7,10 @@ const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  title: "Viajes Dashboard",
+  title: {
+    template: "%s | Viajes Dashboard",
+    default: "Viajes Dashboard"
+  },
   description: "Dashboard para ver y administrar viajes y mantenimiento de camiones",
 };
 
