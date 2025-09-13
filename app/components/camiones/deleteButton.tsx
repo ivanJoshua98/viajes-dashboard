@@ -23,7 +23,7 @@ export function DeleteCamion({ id }: { id: string }) {
       {/* Modal de confirmación */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50">
-          <div className="rounded-lg bg-indigo-800 p-6 shadow-lg w-full max-w-sm">
+          <div className="rounded-lg bg-gray-800 p-6 shadow-lg w-full max-w-sm border border-black">
             <h2 className="text-lg font-semibold text-gray-50">¿Estás seguro?</h2>
             <p className="text-sm text-gray-50 mt-2">
               Se eliminará el camión permanentemente.
