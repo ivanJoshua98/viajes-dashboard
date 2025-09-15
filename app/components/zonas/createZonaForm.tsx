@@ -1,0 +1,102 @@
+'use client';
+
+import Link from "next/link";
+import { Button } from "@/app/components/button";
+import { FlagIcon } from "@heroicons/react/24/outline";
+import { useActionState } from "react";
+import { createZona, StateZonaForm } from "@/app/lib/actions/zonaAction";
+
+export default function CreateZonaForm () {
+
+  const initialState: StateZonaForm = { message: null, errors: {} };
+  const [state, formAction] = useActionState(createZona, initialState);
+
+  function resetAlerts () {
+    const nombreError = document.getElementById('nombre-error');
+    if ( nombreError ) { nombreError.innerHTML = '' };
+
+    const regionError = document.getElementById('region-error');
+    if ( regionError ) { regionError.innerHTML = '' };
+
+    const fieldsError = document.getElementById('fields-error');
+    if ( fieldsError ) { fieldsError.innerHTML = '' };
+  }
+
+  return (
+    <form action={ formAction } onChange={resetAlerts}>
+      <div className="rounded-md bg-gray-800 p-4 md:p-6">
+        {/* Nombre de la zona */}
+        <div className="mb-4">
+          <label htmlFor="nombre" className="mb-2 block text-sm font-medium">
+            Ingrese el nombre
+          </label>
+          <div className="relative mt-2 rounded-md">
+            <div className="relative">
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                defaultValue=""
+                placeholder="Ingrese un nombre valido"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                aria-describedby="nombre-error"
+              />
+              <FlagIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-500" />
+            </div>
+          </div>
+          <div id="nombre-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.nombre &&
+              state.errors.nombre.map((error: string) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))}
+          </div>
+        </div>
+        {/* Nombre de la region */}
+        <div className="mb-4">
+          <label htmlFor="region" className="mb-2 block text-sm font-medium">
+            Ingrese la región
+          </label>
+          <div className="relative mt-2 rounded-md">
+            <div className="relative">
+              <input
+                id="region"
+                name="region"
+                type="text"
+                defaultValue=""
+                placeholder="Ingrese una región valida"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                aria-describedby="region-error"
+              />
+              <FlagIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-500" />
+            </div>
+          </div>
+          <div id="region-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.region &&
+              state.errors.region.map((error: string) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))}
+          </div>
+        </div>
+        <div id="fields-error" aria-live="polite" aria-atomic="true">
+          {state.message ? 
+            <p className="mt-2 text-sm text-red-500"> {state.message} </p> 
+            : 
+            null}
+        </div>
+      </div>
+      <div className="mt-6 flex justify-end gap-4">
+        <Link
+          href="/dashboard/zonas"
+          className="flex h-10 items-center rounded-lg bg-gray-500 px-4 text-sm font-medium text-gray-50 transition-colors hover:bg-sky-800"
+        >
+          Cancelar
+        </Link>
+        <Button type="submit">Agregar Zona</Button>
+      </div>
+    </form>
+  );
+}
