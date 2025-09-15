@@ -2,22 +2,8 @@
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import z from 'zod';
 import sql from '@/app/lib/data/db';
- 
-const CamionFormSchema = z.object({
-  id: z.string(),
-  patente:  z
-    .string({
-      invalid_type_error: 'Por favor ingrese una patente válida.',
-    })
-    .min(6, {
-      message: 'La patente es muy corta.'
-    })
-    .max(10, {
-      message: 'La patente es muy larga.'
-    }),
-});
+import { CamionFormSchema } from '@/app/lib/schemas/camionFormSchema';
 
 export type StateCamionForm = {
   errors?: {
