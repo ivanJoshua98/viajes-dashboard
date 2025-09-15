@@ -1,5 +1,5 @@
 import { UpdateCamion } from '@/app/components/camiones/buttons';
-import { fetchCamiones } from '@/app/lib/data/fetchData';
+import { fetchCamiones } from '@/app/lib/data/fetchDataCamiones';
 import { TruckIcon } from '@heroicons/react/24/outline';
 import { DeleteCamion } from '@/app/components/camiones/deleteButton';
 

@@ -1,4 +1,4 @@
-import { fetchTiposCamion } from "@/app/lib/data/fetchData";
+import { fetchTiposCamion } from "@/app/lib/data/fetchDataCamiones";
 
 export default async function TiposCamionTable () {
 
