@@ -1,6 +1,7 @@
-import { UpdateCamion, DeleteCamion } from '@/app/components/camiones/buttons';
+import { UpdateCamion } from '@/app/components/camiones/buttons';
 import { fetchCamiones } from '@/app/lib/data/fetchData';
 import { TruckIcon } from '@heroicons/react/24/outline';
+import { DeleteCamion } from '@/app/components/camiones/deleteButton';
 
 export default async function CamionesTable() {
   

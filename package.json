@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "test": "jest"
+    "test": "jest --config jest.config.ts"
   },
   "dependencies": {
     "clsx": "2.1.1",
@@ -15,7 +15,8 @@
     "next": "15.5.2",
     "postgres": "3.4.7",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "zod": "3.25.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

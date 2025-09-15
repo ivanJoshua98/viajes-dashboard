@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import sql from './db';
+import sql from '@/app/lib/data/db';
 
 describe('sql constant', () => {
   // Simula una consulta simple para verificar la conexión
@@ -14,4 +14,9 @@ describe('sql constant', () => {
     const badSql = postgres('postgres://invalid:invalid@localhost:5432/invalid');
     await expect(badSql`SELECT 1`).rejects.toThrow();
   });
+});
+
+// Cierra la conexión después de todas las pruebas
+afterAll(async () => {
+  await sql.end(); 
 });
