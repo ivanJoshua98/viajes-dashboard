@@ -1,4 +1,5 @@
 import { CamionFormSchema } from "@/app/lib/schemas/camionFormSchema";
+import z from "zod";
 
 describe('CamionFormSchema', () => {
   it('valida correctamente una patente válida', () => {
@@ -26,5 +27,10 @@ describe('CamionFormSchema', () => {
     const result = CamionFormSchema.safeParse(data);
     expect(result.success).toBe(false);
     expect(result.error?.flatten().fieldErrors.patente).toContain('Por favor ingrese una patente válida.');
+  });
+
+  it('falla si falta el id', () => {
+    const invalidData = { patente: 'ABC1234' };
+    expect(() => CamionFormSchema.parse(invalidData)).toThrow(z.ZodError);
   });
 });

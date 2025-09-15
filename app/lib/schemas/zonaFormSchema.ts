@@ -12,12 +12,12 @@ export const ZonaFormSchema = z.object({
             message: 'El nombre es muy largo.'
           }),
   region: z.string({
-            invalid_type_error: 'Por favor ingrese una region válida.',
+            invalid_type_error: 'Por favor ingrese una región válida.',
           })
           .min(1, {
-            message: 'La region es muy corta.'
+            message: 'La región es muy corta.'
           })
           .max(64, {
-            message: 'La region es muy larga.'
+            message: 'La región es muy larga.'
           }),
 })
