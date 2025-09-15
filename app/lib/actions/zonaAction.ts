@@ -47,3 +47,39 @@ export async function createZona (prevState: StateZonaForm, formData: FormData) 
   revalidatePath('/dashboard/zonas');
   redirect('/dashboard/zonas')
 };
+
+
+/*--------------------------------UPDATE--------------------------------------------------*/
+
+const UpdateZona = ZonaFormSchema.omit({ id: true });
+
+export async function updateZona(id: string, prevState: StateZonaForm, formData: FormData) {
+
+  const validatedFields = UpdateZona.safeParse({
+    nombre: formData.get('nombre'),
+    region: formData.get('region'),
+  });
+
+  if (!validatedFields.success) {
+    return {  
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Faltan completar campos. No se pudo editar la zona.',
+    }
+  }
+
+  const { nombre, region } = validatedFields.data;
+ 
+  try {
+    await sql`
+      UPDATE zonas 
+      SET nombre = ${nombre}, region = ${region} 
+      WHERE id = ${id};
+    `;
+  } catch (error) {
+    return {
+      message: 'Database Error: Fallo al actualizar la zona.',
+    };
+  }
+  revalidatePath('/dashboard/zonas');
+  redirect('/dashboard/zonas');
+}

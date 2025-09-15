@@ -13,3 +13,17 @@ export async function fetchZonas () {
     throw new Error('Error al obtener las zonas');
   }
 }
+
+export async function fetchZonaById(id: string) {
+  try {
+    const zona = await sql<Zona[]>`
+      SELECT id, nombre, region 
+      FROM zonas
+      WHERE id = ${id}
+    `
+    return zona;
+  } catch (error) {
+    console.log('Database error:', error);
+    throw new Error('Error al obtener la zona');
+  }
+}
