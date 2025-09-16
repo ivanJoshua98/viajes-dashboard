@@ -64,3 +64,42 @@ export async function createTarifa (prevState: StateTarifaForm, formData: FormDa
   revalidatePath('/dashboard/tarifas');
   redirect('/dashboard/tarifas');
  }
+
+ /*--------------------------------UPDATE--------------------------------------------------*/
+
+
+ const UpdateTarifa = TarifaFormSchema.omit({ id: true , zona: true, tipo: true});
+  
+export async function updateTarifa (id: string, prevState: StateTarifaForm, formData: FormData) {
+  const validatedFields = UpdateTarifa.safeParse({
+    monto: formData.get('monto'),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: {
+        ...validatedFields.error.flatten().fieldErrors,
+        zona: undefined,
+        tipo: undefined,
+      },
+      message: 'Faltan completar campos. No se pudo editar la tarifa.',
+    }
+  }
+
+  const { monto } = validatedFields.data;
+
+  try {
+     await sql`
+      UPDATE tarifas 
+      SET monto_centavos = ${monto * 100}
+      WHERE id = ${id};
+    `; 
+  } catch (error) {
+    return {
+      message: 'Database Error: No se pudo editar la tarifa.',
+    };
+  }
+   
+  revalidatePath('/dashboard/tarifas');
+  redirect('/dashboard/tarifas');
+ }
