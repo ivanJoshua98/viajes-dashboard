@@ -14,3 +14,9 @@ export type TipoCamion = {
   id: string;
   tipo: string;
 };
+
+export type Zona = {
+  id: string;
+  nombre: string;
+  region: string;
+};

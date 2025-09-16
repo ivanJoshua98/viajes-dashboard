@@ -1,6 +1,6 @@
 import CamionesTable from "@/app/components/camiones/camionesTable";
 import { AddCamion } from "@/app/components/camiones/buttons";
-import { CamionesTableSkeleton, TableRowSkeleton } from "@/app/components/dashboard/skeletons";
+import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import TiposCamionTable from "@/app/components/camiones/tiposCamionTable";

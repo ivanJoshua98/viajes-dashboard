@@ -4,8 +4,7 @@ import { IdentificationIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/components/button';
 import { useActionState } from 'react';
-import { CamionForm } from '@/app/lib/data/definitions';
-import { createCamion, StateCamionForm, updateCamion } from '@/app/lib/actions/camionActions';
+import { createCamion, StateCamionForm } from '@/app/lib/actions/camionActions';
 
 export default function CreateCamionForm () {
 

@@ -1,4 +1,4 @@
-import sql from './db';
+import sql from "@/app/lib/data/db";
 import { Camion, CamionForm, TipoCamion } from '@/app/lib/data/definitions';
 
 export async function fetchCamiones () {

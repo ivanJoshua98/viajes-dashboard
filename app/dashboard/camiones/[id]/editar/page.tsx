@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { fetchCamionById } from '@/app/lib/data/fetchData';
+import { fetchCamionById } from '@/app/lib/data/fetchDataCamiones';
 import Breadcrumbs from '@/app/components/dashboard/breadcrums';
 import EditCamionForm from '@/app/components/camiones/edit-form';
 
