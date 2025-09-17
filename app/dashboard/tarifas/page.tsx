@@ -1,6 +1,25 @@
+import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
+import { AddTarifa } from "@/app/components/tarifas/buttons";
+import TarifasTable from "@/app/components/tarifas/tarifasTable";
+import { Metadata } from "next"
+import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: 'Tarifas'
+};
 
 export default function Tarifas () {
   return (
-    <h1>Tarifas</h1>
-  )
+    <div className="w-full">
+      <div className="flex w-full items-center justify-between">
+        <h1 className={'text-2xl'}>Tarifas</h1>
+      </div>
+      <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+        <AddTarifa />
+      </div>
+      {<Suspense fallback={<CamionesTableSkeleton />}>
+        <TarifasTable />
+      </Suspense>}
+    </div>
+  );
 }
