@@ -29,3 +29,20 @@ export type Tarifa = {
   tipo: string;
   zona_nombre: string;
 };
+
+export type Viaje = {
+  viaje_id: string;
+  fecha: Date;
+  zona_id: string;
+  zona_nombre: string;
+  tipo_id: string;
+  tipo_camion_nombre: string;
+  cajones: number;
+  cant_clientes: number;
+  valor_flete_centavos: number;
+  observaciones: string;
+  camion_id: string;
+  camion_patente: string;
+  litros_combustible: number;
+  kilometraje: number;
+}
