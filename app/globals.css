@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 15px;
+  width: 100%;
+  cursor: pointer;
+  filter: invert(0.15);
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: oklch(44.3% 0.11 240.79);
+  border-radius: 10px;
+}
+
+
+
