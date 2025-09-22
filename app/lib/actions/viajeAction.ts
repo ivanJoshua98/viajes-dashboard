@@ -119,3 +119,10 @@ export async function createViaje (prevState: StateViajeForm, formData: FormData
     success: true
   };
 }
+
+/*--------------------------------DELETE--------------------------------------------------*/
+
+export async function deleteViaje(id: string) {
+    await sql`DELETE FROM viajes WHERE id = ${id}`;
+    revalidatePath('/dashboard/viajes');  
+}

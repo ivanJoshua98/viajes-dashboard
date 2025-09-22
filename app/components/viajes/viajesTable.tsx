@@ -3,6 +3,7 @@ import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { UpdateViaje } from "@/app/components/viajes/buttons";
 import { formatMoney } from "@/app/lib/utils/formatMoney";
 import { formatDateToLocal } from "@/app/lib/utils/formatDateToLocal";
+import { DeleteViaje } from "@/app/components/viajes/deleteButton";
 
 export default async function ViajesTable () {
   
@@ -124,6 +125,7 @@ export default async function ViajesTable () {
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       <UpdateViaje id={ viaje.viaje_id } />
+                      <DeleteViaje id={ viaje.viaje_id } />
                     </div>
                   </td>
                 </tr>
