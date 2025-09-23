@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${comfortaa.className} antialiased`}
+        className={`${comfortaa.className} antialiased overflow-x-hidden w-full`}
       >
         {children}
       </body>
