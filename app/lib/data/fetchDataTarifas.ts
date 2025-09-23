@@ -1,5 +1,5 @@
 import sql from "@/app/lib/data/db";
-import { Tarifa } from "@/app/lib/data/definitions";
+import { Tarifa, TarifaAdicional } from "@/app/lib/data/definitions";
 
 export async function fetchTarifas () {
   try {
@@ -32,5 +32,18 @@ export async function fetchTarifaById(id: string) {
   } catch (error) {
     console.log('Database error:', error);
     throw new Error('Error al obtener la tarifa');
+  }
+}
+
+export async function fetchTarifasAdicionales () {
+  try {
+    const tarifasAdicionales = await sql<TarifaAdicional[]>`
+      SELECT id, cantidad, monto_centavos 
+      FROM tarifas_adicionales;
+    ` 
+    return tarifasAdicionales;
+  } catch (error) {
+    console.log('Database error:', error);
+    throw new Error('Error al obtener las tarifas adicionales.')
   }
 }

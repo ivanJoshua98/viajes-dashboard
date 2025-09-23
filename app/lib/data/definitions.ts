@@ -46,3 +46,9 @@ export type Viaje = {
   litros_combustible: number;
   kilometraje: number;
 }
+
+export type TarifaAdicional = {
+  id: string;
+  cantidad: number;
+  monto_centavos: number;
+}
