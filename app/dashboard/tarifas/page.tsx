@@ -1,5 +1,6 @@
 import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
 import { AddTarifa } from "@/app/components/tarifas/buttons";
+import TarifasAdicionalesTable from "@/app/components/tarifas/tarifasAdicionalesTable";
 import TarifasTable from "@/app/components/tarifas/tarifasTable";
 import { Metadata } from "next"
 import { Suspense } from "react";
@@ -19,6 +20,12 @@ export default function Tarifas () {
       </div>
       {<Suspense fallback={<CamionesTableSkeleton />}>
         <TarifasTable />
+      </Suspense>}
+      <div className="mt-8 flex w-full items-center justify-between">
+        <h1 className={'text-2xl'}>Tarifas Adicionales</h1>
+      </div>
+      {<Suspense fallback={<CamionesTableSkeleton />}>
+        <TarifasAdicionalesTable />
       </Suspense>}
     </div>
   );
