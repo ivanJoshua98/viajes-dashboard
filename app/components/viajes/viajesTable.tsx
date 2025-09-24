@@ -5,9 +5,9 @@ import { formatMoney } from "@/app/lib/utils/formatMoney";
 import { formatDateToLocal } from "@/app/lib/utils/formatDateToLocal";
 import { DeleteViaje } from "@/app/components/viajes/deleteButton";
 
-export default async function ViajesTable ({ currentPage }: {currentPage: number}) {
+export default async function ViajesTable ({ query, currentPage }: {query: string, currentPage: number}) {
   
-  const viajes = await fetchFilteredViajes(currentPage);
+  const viajes = await fetchFilteredViajes(query, currentPage);
 
   return (
     <div className="mt-6 flow-root">
