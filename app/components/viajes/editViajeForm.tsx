@@ -1,45 +1,65 @@
 'use client';
 
 import { StateViajeForm, updateViaje } from "@/app/lib/actions/viajeAction";
-import { Zona, TipoCamion, Camion, Tarifa, Viaje } from "@/app/lib/data/definitions";
+import { Zona, TipoCamion, Camion, Tarifa, Viaje, TarifaAdicional } from "@/app/lib/data/definitions";
 import { CalendarIcon, FlagIcon, IdentificationIcon, CalculatorIcon, UserGroupIcon, CurrencyDollarIcon, ChatBubbleBottomCenterIcon, TruckIcon, BoltIcon, MapIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useActionState, useState, useEffect } from "react";
 import { Button } from "@/app/components/button";
 
-export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas }: { viaje: Viaje, zonas: Zona[], tipos: TipoCamion[], camiones: Camion[], tarifas: Tarifa[] }) {
+export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, tarifasAdicionales }: { viaje: Viaje, zonas: Zona[], tipos: TipoCamion[], camiones: Camion[], tarifas: Tarifa[], tarifasAdicionales: TarifaAdicional[] }) {
 
   const initialState: StateViajeForm = { message: null, errors: {}, success: null };
   const updateViajeWithId = updateViaje.bind(null, viaje.viaje_id);
   const [state, formAction] = useActionState<StateViajeForm, FormData>(updateViajeWithId, initialState);
 
-  const [montoCentavos, setMontoCentavos] = useState(viaje.valor_flete_centavos / 100);
+  const [montoCentavos, setMontoCentavos] = useState(viaje.valor_flete_centavos);
   const [zonaId, setZonaId] = useState(viaje.zona_id);
   const [tipoId, setTipoId] = useState(viaje.tipo_id);
+  const [cantClientes, setCantClientes] = useState(viaje.cant_clientes);
+
+  
+  // Si la cantidad de clientes es mayor a 4, se suma un monto adicional
+  function getMontoAdicional(): number {
+    const cantExtra = cantClientes - 4;
+    if (cantExtra <= 0) return 0;
+
+    const adicional = tarifasAdicionales.find(t => t.cantidad === cantExtra);
+    if (adicional) {
+      return Number(adicional.monto_centavos) * cantExtra; 
+    }
+    return 0;
+  }
 
   function handleMontoChange(event: React.ChangeEvent<HTMLInputElement>) {
     const inputValue = event.target.value;
     const montoEnPesos = parseFloat(inputValue);
     if (!isNaN(montoEnPesos)) {
-      setMontoCentavos(Math.round(montoEnPesos * 100)); // Se guarda en centavos
+      const newMonto = Math.round(montoEnPesos * 100 + getMontoAdicional()); // Se guarda en centavos
+      setMontoCentavos(newMonto); 
     } else {
-      setMontoCentavos(viaje.valor_flete_centavos / 100);
+      setMontoCentavos(viaje.valor_flete_centavos);
     } 
   }
 
-  function updateDefaultMonto () {
+  function updateDefaultMonto() {
     if (tipoId !== '' && zonaId !== '') {
-      const result = tarifas.find( tarifa => 
-        tipoId === tarifa.tipo_camion_id && 
+      const result = tarifas.find(tarifa =>
+        tipoId === tarifa.tipo_camion_id &&
         zonaId === tarifa.zona_id
-      ); 
-      setMontoCentavos(result?.monto_centavos || viaje.valor_flete_centavos / 100);
+      );
+      if (result) {
+        const baseMonto = Number(result.monto_centavos);
+        const adicional = getMontoAdicional();
+        const defaultMonto = baseMonto + adicional;
+        setMontoCentavos(Math.round(defaultMonto));
+      }
     }
   }
 
   useEffect(() => {
     if (zonaId !== '' && tipoId !== '') updateDefaultMonto(); 
-  }, [zonaId, tipoId]);
+  }, [zonaId, tipoId, cantClientes]);
 
   return (
     <form action={ formAction } >
@@ -186,7 +206,8 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas }
                 type="number"
                 step="1"
                 placeholder="Ingrese una cantidad válida"
-                defaultValue={ viaje.cant_clientes }
+                defaultValue={ cantClientes }
+                onChange={e => setCantClientes(Number(e.target.value))}
                 className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
                 aria-describedby="cant-clientes-error"
               />

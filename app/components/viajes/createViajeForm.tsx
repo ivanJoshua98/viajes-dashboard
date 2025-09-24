@@ -1,13 +1,25 @@
 'use client';
 
 import { createViaje, StateViajeForm } from "@/app/lib/actions/viajeAction";
-import { Camion, Tarifa, TipoCamion, Zona } from "@/app/lib/data/definitions";
+import { Camion, Tarifa, TarifaAdicional, TipoCamion, Zona } from "@/app/lib/data/definitions";
 import { BoltIcon, CalculatorIcon, CalendarIcon, ChatBubbleBottomCenterIcon, CurrencyDollarIcon, FlagIcon, IdentificationIcon, MapIcon, SunIcon, TruckIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React, { useActionState, useEffect, useState } from "react";
 import { Button } from "@/app/components/button";
 
-export default function CreateViajeForm ({ zonas, tipos, camiones, tarifas }: { zonas: Zona[], tipos: TipoCamion[], camiones: Camion[], tarifas: Tarifa[] }) {
+export default function CreateViajeForm ({ 
+  zonas, 
+  tipos, 
+  camiones, 
+  tarifas, 
+  tarifasAdicionales 
+}: { 
+      zonas: Zona[],
+      tipos: TipoCamion[], 
+      camiones: Camion[], 
+      tarifas: Tarifa[], 
+      tarifasAdicionales: TarifaAdicional[] 
+    }) {
 
   const initialState: StateViajeForm = { message: null, errors: {} };
   const [state, formAction] = useActionState(createViaje, initialState);
@@ -22,25 +34,45 @@ export default function CreateViajeForm ({ zonas, tipos, camiones, tarifas }: { 
   const [litros, setLitros] = useState(0);
   const [km, setKm] = useState(0);
 
+  // Si la cantidad de clientes es mayor a 4, se suma un monto adicional
+  function getMontoAdicional(): number {
+    const cantExtra = cantClientes - 4;
+    if (cantExtra <= 0) return 0;
+
+    const adicional = tarifasAdicionales.find(t => t.cantidad === cantExtra);
+    if (adicional) {
+      return Number(adicional.monto_centavos) * cantExtra; 
+    }
+    return 0;
+  }
+
+
   function handleMontoChange(event: React.ChangeEvent<HTMLInputElement>) {
     const inputValue = event.target.value;
     const montoEnPesos = parseFloat(inputValue);
     if (!isNaN(montoEnPesos)) {
-      setMontoCentavos(Math.round(montoEnPesos * 100)); // Se guarda en centavos
+      const newMonto = Math.round(montoEnPesos * 100 + getMontoAdicional()); // Se guarda en centavos
+      setMontoCentavos(newMonto); 
     } else {
       setMontoCentavos(0);
     } 
   }
 
-  function updateDefaultMonto () {
+  function updateDefaultMonto() {
     if (tipoId !== '' && zonaId !== '') {
-      const result = tarifas.find( tarifa => 
-        tipoId === tarifa.tipo_camion_id && 
+      const result = tarifas.find(tarifa =>
+        tipoId === tarifa.tipo_camion_id &&
         zonaId === tarifa.zona_id
-      ); 
-      setMontoCentavos(result?.monto_centavos || 0);
+      );
+      if (result) {
+        const baseMonto = Number(result.monto_centavos);
+        const adicional = getMontoAdicional();
+        const defaultMonto = baseMonto + adicional;
+        setMontoCentavos(Math.round(defaultMonto));
+      }
     }
   }
+
 
   function restoreLastOptionSelected (optionId: string) {
     const option = document.getElementById(optionId) as HTMLOptionElement;
@@ -56,7 +88,7 @@ export default function CreateViajeForm ({ zonas, tipos, camiones, tarifas }: { 
 
     if (zonaId !== '' && tipoId !== '') updateDefaultMonto(); 
 
-  }, [zonaId, tipoId, camion, state.errors]);
+  }, [zonaId, tipoId, camion, cantClientes, state.errors]);
 
   useEffect(() => {
     if (state?.success) {
@@ -190,7 +222,7 @@ export default function CreateViajeForm ({ zonas, tipos, camiones, tarifas }: { 
                 step="1"
                 placeholder="Ingrese una cantidad válida"
                 value={cajones}
-                onChange={e => setCajones(parseInt(e.target.value))}
+                onChange={e => setCajones(Number(e.target.value))}
                 className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
                 aria-describedby="cajones-error"
               />
@@ -221,7 +253,7 @@ export default function CreateViajeForm ({ zonas, tipos, camiones, tarifas }: { 
                 step="1"
                 placeholder="Ingrese una cantidad válida"
                 value={cantClientes}
-                onChange={e => setCantClientes(parseInt(e.target.value))}
+                onChange={e => setCantClientes(Number(e.target.value))}
                 className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
                 aria-describedby="cant-clientes-error"
               />

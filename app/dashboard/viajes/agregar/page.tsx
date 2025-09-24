@@ -1,7 +1,7 @@
 import Breadcrumbs from "@/app/components/dashboard/breadcrums";
 import CreateViajeForm from "@/app/components/viajes/createViajeForm";
 import { fetchCamiones, fetchTiposCamion } from "@/app/lib/data/fetchDataCamiones";
-import { fetchTarifas } from "@/app/lib/data/fetchDataTarifas";
+import { fetchTarifas, fetchTarifasAdicionales } from "@/app/lib/data/fetchDataTarifas";
 import { fetchZonas } from "@/app/lib/data/fetchDataZonas";
 import { Metadata } from "next"
 
@@ -11,11 +11,12 @@ export const metadata: Metadata = {
 
 export default async function Page () {
 
-  const [ zonas, tipos, camiones, tarifas ] = await Promise.all([
+  const [ zonas, tipos, camiones, tarifas, tarifasAdicionales ] = await Promise.all([
     fetchZonas(),
     fetchTiposCamion(),
     fetchCamiones(),
-    fetchTarifas()
+    fetchTarifas(),
+    fetchTarifasAdicionales()
   ]);
 
   return (
@@ -30,7 +31,7 @@ export default async function Page () {
           },
         ]}
       />
-      <CreateViajeForm zonas={zonas} tipos={tipos} camiones={camiones} tarifas={tarifas}/>
+      <CreateViajeForm zonas={zonas} tipos={tipos} camiones={camiones} tarifas={tarifas} tarifasAdicionales={tarifasAdicionales}/>
     </main>
   )
 }
