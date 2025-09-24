@@ -1,5 +1,5 @@
 import { fetchTarifas, fetchTarifasAdicionales } from "@/app/lib/data/fetchDataTarifas";
-import { UpdateTarifa } from "./buttons";
+import { UpdateTarifa, UpdateTarifaAdicional } from "./buttons";
 import { DocumentCurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { formatMoney } from "@/app/lib/utils/formatMoney";
 
@@ -68,7 +68,7 @@ export default async function TarifasAdicionalesTable () {
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      <UpdateTarifa id={tarifa.id} />
+                      <UpdateTarifaAdicional id={tarifa.id} />
                     </div>
                   </td>
                 </tr>
