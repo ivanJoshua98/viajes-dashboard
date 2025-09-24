@@ -47,3 +47,17 @@ export async function fetchTarifasAdicionales () {
     throw new Error('Error al obtener las tarifas adicionales.')
   }
 }
+
+export async function fetchTarifaAdicionalById (id: string) {
+  try {
+    const [ tarifaAdicional ] = await sql<TarifaAdicional[]>`
+      SELECT id, cantidad, monto_centavos 
+      FROM tarifas_adicionales 
+      WHERE id = ${id};
+    ` 
+    return tarifaAdicional;
+  } catch (error) {
+    console.log('Database error:', error);
+    throw new Error('Error al obtener la tarifa adicional.')
+  }
+}
