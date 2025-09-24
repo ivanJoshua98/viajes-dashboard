@@ -33,7 +33,7 @@ export async function fetchViajes () {
 
 const ITEMS_PER_PAGE = 6;
 
-export async function fetchFilteredViajes (currentPage: number) {
+export async function fetchFilteredViajes (query: string, currentPage: number) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
     const viajes = await sql<Viaje[]>`
@@ -55,6 +55,13 @@ export async function fetchFilteredViajes (currentPage: number) {
     JOIN zonas ON viajes.zona = zonas.id 
     JOIN tipos_camion ON viajes.tipo_camion = tipos_camion.id 
     JOIN camiones ON viajes.camion = camiones.id 
+    WHERE 
+      viajes.fecha::text ILIKE ${`%${query}%`} OR 
+      zonas.nombre ILIKE ${`%${query}%`} OR 
+      tipos_camion.tipo ILIKE ${`%${query}%`} OR 
+      valor_flete_centavos::text ILIKE ${`%${query}%`} OR 
+      observaciones ILIKE ${`%${query}%`} OR 
+      camiones.patente ILIKE ${`%${query}%`}  
     ORDER BY viajes.fecha DESC
     LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset};
   `;
@@ -66,14 +73,21 @@ export async function fetchFilteredViajes (currentPage: number) {
 }
 
 // Obtener la cantidad de resultados para paginar
-export async function fetchViajesPages() {
+export async function fetchViajesPages(query: string) {
 try {
     const data = await sql`
     SELECT COUNT(*)
     FROM viajes 
     JOIN zonas ON viajes.zona = zonas.id 
     JOIN tipos_camion ON viajes.tipo_camion = tipos_camion.id 
-    JOIN camiones ON viajes.camion = camiones.id;
+    JOIN camiones ON viajes.camion = camiones.id
+    WHERE 
+      viajes.fecha::text ILIKE ${`%${query}%`} OR 
+      zonas.nombre ILIKE ${`%${query}%`} OR 
+      tipos_camion.tipo ILIKE ${`%${query}%`} OR 
+      valor_flete_centavos::text ILIKE ${`%${query}%`} OR 
+      observaciones ILIKE ${`%${query}%`} OR 
+      camiones.patente ILIKE ${`%${query}%`};
   `;
   const totalPages = Math.ceil(Number(data[0].count) / ITEMS_PER_PAGE);
   return totalPages;

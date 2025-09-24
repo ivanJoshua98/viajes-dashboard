@@ -1,5 +1,6 @@
 import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
 import Pagination from "@/app/components/pagination";
+import Search from "@/app/components/search";
 import { AddViaje } from "@/app/components/viajes/buttons";
 import ViajesTable from "@/app/components/viajes/viajesTable";
 import { fetchViajesPages } from "@/app/lib/data/fetchDataViajes";
@@ -12,13 +13,15 @@ export const metadata: Metadata = {
 
 export default async function Viajes ( props: {
   searchParams?: Promise<{
+    query?: string,
     page?: string,
   }>
 }) {
 
   const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchViajesPages();
+  const totalPages = await fetchViajesPages(query);
 
   return (
     <div className="w-full">
@@ -26,10 +29,11 @@ export default async function Viajes ( props: {
         <h1 className={'text-2xl'}>Viajes</h1>
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+        <Search placeholder="Buscar viajes..." />
         <AddViaje />
       </div>
-      {<Suspense key={currentPage} fallback={<CamionesTableSkeleton />}>
-        <ViajesTable currentPage={currentPage} />
+      {<Suspense key={query + currentPage} fallback={<CamionesTableSkeleton />}>
+        <ViajesTable query={query} currentPage={currentPage} />
       </Suspense>}
       <div className="mt-5 flex w-full justify-center">
         { <Pagination totalPages={totalPages} /> }
