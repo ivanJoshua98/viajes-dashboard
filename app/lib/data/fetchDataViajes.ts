@@ -31,6 +31,57 @@ export async function fetchViajes () {
   }
 }
 
+const ITEMS_PER_PAGE = 6;
+
+export async function fetchFilteredViajes (currentPage: number) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  try {
+    const viajes = await sql<Viaje[]>`
+    SELECT viajes.id AS viaje_id, 
+           fecha, 
+           zona AS zona_id, 
+           zonas.nombre AS zona_nombre, 
+           tipo_camion AS tipo_id, 
+           tipos_camion.tipo AS tipo_camion_nombre, 
+           cajones, 
+           cant_clientes, 
+           valor_flete_centavos, 
+           observaciones, 
+           camion AS camion_id, 
+           camiones.patente AS camion_patente, 
+           litros_combustible, 
+           kilometraje 
+    FROM viajes 
+    JOIN zonas ON viajes.zona = zonas.id 
+    JOIN tipos_camion ON viajes.tipo_camion = tipos_camion.id 
+    JOIN camiones ON viajes.camion = camiones.id 
+    ORDER BY viajes.fecha DESC
+    LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset};
+  `;
+  return viajes;
+  } catch (error) {
+    console.log('Database Error:', error);
+    throw new Error('Error al obtener los viajes');
+  }
+}
+
+// Obtener la cantidad de resultados para paginar
+export async function fetchViajesPages() {
+try {
+    const data = await sql`
+    SELECT COUNT(*)
+    FROM viajes 
+    JOIN zonas ON viajes.zona = zonas.id 
+    JOIN tipos_camion ON viajes.tipo_camion = tipos_camion.id 
+    JOIN camiones ON viajes.camion = camiones.id;
+  `;
+  const totalPages = Math.ceil(Number(data[0].count) / ITEMS_PER_PAGE);
+  return totalPages;
+  } catch (error) {
+    console.log('Database Error:', error);
+    throw new Error('Error al obtener la cantidad de viajes');
+  }
+}
 
 export async function fetchViajeById (id: string) {
   try {
@@ -60,6 +111,4 @@ export async function fetchViajeById (id: string) {
     console.log('Database error:', error);
     throw new Error('Error al obtener el viaje.');
   }
-  
-
 }

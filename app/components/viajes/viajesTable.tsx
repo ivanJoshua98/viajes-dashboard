@@ -1,13 +1,13 @@
-import { fetchViajes } from "@/app/lib/data/fetchDataViajes";
+import { fetchFilteredViajes } from "@/app/lib/data/fetchDataViajes";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { UpdateViaje } from "@/app/components/viajes/buttons";
 import { formatMoney } from "@/app/lib/utils/formatMoney";
 import { formatDateToLocal } from "@/app/lib/utils/formatDateToLocal";
 import { DeleteViaje } from "@/app/components/viajes/deleteButton";
 
-export default async function ViajesTable () {
+export default async function ViajesTable ({ currentPage }: {currentPage: number}) {
   
-  const viajes = await fetchViajes();
+  const viajes = await fetchFilteredViajes(currentPage);
 
   return (
     <div className="mt-6 flow-root">
