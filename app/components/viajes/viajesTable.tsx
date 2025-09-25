@@ -23,23 +23,21 @@ export default async function ViajesTable ({ query, currentPage }: {query: strin
                   <div>
                     <div className="mb-2 flex items-center">
                       <PencilSquareIcon className="mr-2 rounded-full h-8 w-8"/>
-                      <p className="text-sm text-gray-50">{ formatDateToLocal(viaje.fecha) }</p>
+                      <p className="text-base text-gray-50">{ formatDateToLocal(viaje.fecha) }</p>
                     </div>
-                    <p className="text-sm text-gray-50">{ viaje.zona_nombre }</p>
-                    <p className="text-sm text-gray-50">${ viaje.tipo_camion_nombre }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Zona: </span>{ viaje.zona_nombre }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Tipo de camion: </span>{ viaje.tipo_camion_nombre }</p>
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
                   <div>
-                    <p className="text-xl font-medium">
-                      { viaje.cajones }
-                    </p>
-                    <p>{ viaje.cant_clientes }</p>
-                    <p>{ formatMoney(viaje.valor_flete_centavos) }</p>
-                    <p>{ viaje.observaciones }</p>
-                    <p>{ viaje.camion_patente }</p>
-                    <p>{ viaje.litros_combustible }</p>
-                    <p>{ viaje.kilometraje }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Cantidad de cajones:</span> { viaje.cajones }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Cantidad de clientes:</span> { viaje.cant_clientes }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Monto:</span> { formatMoney(viaje.valor_flete_centavos) }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Observaciones:</span> { viaje.observaciones }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Camión:</span> { viaje.camion_patente }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Litros de combustible:</span> { viaje.litros_combustible }</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Kilometraje:</span> { viaje.kilometraje }</p>
                   </div>
                   <div className="flex justify-end gap-2">
                     <UpdateViaje id={ viaje.viaje_id } />

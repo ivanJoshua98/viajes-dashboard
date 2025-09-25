@@ -19,10 +19,11 @@ export default async function CamionesTable() {
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
-                    <div className="mb-2 flex items-center">
+                    <div className="mb-2 flex items-end">
                       <TruckIcon className="mr-2 rounded-full h-8 w-8"/>
+                      <p className="text-sm text-gray-50">{camion.patente}</p>
                     </div>
-                    <p className="text-sm text-gray-50">{camion.patente}</p>
+                    
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">

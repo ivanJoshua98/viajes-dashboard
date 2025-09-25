@@ -21,9 +21,11 @@ export default async function TarifasAdicionalesTable () {
                   <div>
                     <div className="mb-2 flex items-center">
                       <DocumentCurrencyDollarIcon className="mr-2 rounded-full h-8 w-8"/>
-                      <p className="text-sm text-gray-50">{tarifa.cantidad}</p>
+                      <p className="text-base text-gray-50">
+                        {tarifa.cantidad} 
+                        {(tarifa.cantidad > 1 ? ' clientes' : ' cliente') } extra</p>
                     </div>
-                    <p className="text-sm text-gray-50">${formatMoney(tarifa.monto_centavos)}</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Monto:</span> ${formatMoney(tarifa.monto_centavos)}</p>
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">

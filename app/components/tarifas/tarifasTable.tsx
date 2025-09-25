@@ -19,12 +19,12 @@ export default async function TarifasTable () {
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
-                    <div className="mb-2 flex items-center">
+                    <div className="mb-2 flex items-end">
                       <DocumentCurrencyDollarIcon className="mr-2 rounded-full h-8 w-8"/>
-                      <p className="text-sm text-gray-50">{tarifa.zona_nombre}</p>
+                      <p className="text-base text-gray-50">{tarifa.zona_nombre}</p>
                     </div>
-                    <p className="text-sm text-gray-50">{tarifa.tipo}</p>
-                    <p className="text-sm text-gray-50">${formatMoney(tarifa.monto_centavos)}</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Tipo de camión:</span> {tarifa.tipo}</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Monto:</span> ${formatMoney(tarifa.monto_centavos)}</p>
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
