@@ -28,7 +28,7 @@ export default function CreateTarifaAdicionalForm () {
                 type="number"
                 step="1"
                 placeholder="Ingrese una cantidad"
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="extra-error"
               />
               <CalculatorIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -57,7 +57,7 @@ export default function CreateTarifaAdicionalForm () {
                 type="number"
                 step="0.01"
                 placeholder="Ingrese un monto en ARS"
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="monto-error"
               />
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />

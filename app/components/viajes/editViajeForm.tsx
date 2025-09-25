@@ -77,7 +77,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 name="fecha"
                 type="date"
                 defaultValue={viaje.fecha.toISOString().split("T")[0]}
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm cursor-pointer"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="fecha-error"
               /> 
               <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-500" />
@@ -102,7 +102,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
             <select
               id="zona"
               name="zona"
-              className="peer block w-full cursor-pointer rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+              className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
               defaultValue={ viaje.zona_id }
               onChange={ e => setZonaId(e.target.value) }
               aria-describedby="zona-error"
@@ -137,7 +137,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
             <select
               id="tipo"
               name="tipo"
-              className="peer block w-full cursor-pointer rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+              className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
               defaultValue={ viaje.tipo_id }
               onChange={e => setTipoId(e.target.value)}
               aria-describedby="tipo-error"
@@ -177,7 +177,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 step="1"
                 placeholder="Ingrese una cantidad válida"
                 defaultValue={viaje.cajones}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="cajones-error"
               />
               <CalculatorIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -208,7 +208,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 placeholder="Ingrese una cantidad válida"
                 defaultValue={ cantClientes }
                 onChange={e => setCantClientes(Number(e.target.value))}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="cant-clientes-error"
               />
               <UserGroupIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -239,7 +239,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 placeholder="Ingrese un monto en ARS"
                 value={montoCentavos / 100}
                 onChange={handleMontoChange}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="monto-error"
               />
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -268,7 +268,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 type="text"
                 placeholder="Ingrese alguna observacion"
                 defaultValue={ viaje.observaciones }
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="observaciones-error"
               />
               <ChatBubbleBottomCenterIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-500" />
@@ -293,7 +293,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
             <select
               id="camion"
               name="camion"
-              className="peer block w-full cursor-pointer rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+              className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
               defaultValue={ viaje.camion_id }
               aria-describedby="camion-error"
             >
@@ -332,7 +332,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 step="0.01"
                 placeholder="Ingrese una cantidad válida"
                 defaultValue={ viaje.litros_combustible }
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="litros-error"
               />
               <BoltIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -362,7 +362,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 step="0.01"
                 placeholder="Ingrese un kilometraje válido"
                 defaultValue={ viaje.kilometraje }
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="km-error"
               />
               <MapIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
