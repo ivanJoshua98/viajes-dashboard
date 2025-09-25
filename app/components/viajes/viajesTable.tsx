@@ -22,7 +22,7 @@ export default async function ViajesTable ({ query, currentPage }: {query: strin
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
                     <div className="mb-2 flex items-center">
-                      <PencilSquareIcon className="mr-2 rounded-full h-12 w-12"/>
+                      <PencilSquareIcon className="mr-2 rounded-full h-8 w-8"/>
                       <p className="text-sm text-gray-50">{ formatDateToLocal(viaje.fecha) }</p>
                     </div>
                     <p className="text-sm text-gray-50">{ viaje.zona_nombre }</p>
