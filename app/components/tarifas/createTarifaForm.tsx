@@ -12,8 +12,12 @@ export default function CreateTarifaForm ({ zonas, tipos }: { zonas: Zona[], tip
   const initialState: StateTarifaForm = { message: null, errors: {} };
   const [state, formAction] = useActionState(createTarifa, initialState);
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   return (
-    <form action={ formAction }>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
 
         {/* Zona */}

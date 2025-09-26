@@ -11,8 +11,12 @@ export default function CreateCamionForm () {
   const initialState: StateCamionForm = { message: null, errors: {} };
   const [state, formAction] = useActionState(createCamion, initialState);
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   return (
-    <form action={ formAction }>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
 
         {/* Patente del camion */}

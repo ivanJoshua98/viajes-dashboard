@@ -58,12 +58,16 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
     }
   }
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   useEffect(() => {
     if (zonaId !== '' && tipoId !== '') updateDefaultMonto(); 
   }, [zonaId, tipoId, cantClientes]);
 
   return (
-    <form action={ formAction } >
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
         
         {/* Fecha */}

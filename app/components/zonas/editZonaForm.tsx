@@ -13,8 +13,12 @@ export default function EditZonaForm ({ zona }: {zona: Zona}) {
   const updateZonaWithId = updateZona.bind(null, zona.id);
   const [state, formAction] = useActionState(updateZonaWithId, initialState);
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   return (
-    <form action={ formAction }>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
 
         {/* Nombre de la zona */}

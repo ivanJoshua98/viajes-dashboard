@@ -13,8 +13,12 @@ export default function EditTarifaForm ( { tarifaAdicional: tarifaAdicional }: {
   const updateTarifaAdicionalWithId = updateTarifaAdicional.bind(null, tarifaAdicional.id);
   const [state, formAction] = useActionState(updateTarifaAdicionalWithId, initialState);
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   return (
-    <form action={ formAction }>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
 
         {/* Cantidad extra de clientes */}

@@ -82,6 +82,10 @@ export default function CreateViajeForm ({
     }
   }
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   useEffect(() => {
     restoreLastOptionSelected(zonaId);
     restoreLastOptionSelected(tipoId);
@@ -107,7 +111,7 @@ export default function CreateViajeForm ({
   }, [state?.success]);
 
   return (
-    <form action={ formAction } >
+    <form action={ formAction } onChange={resetAlert}>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
         
         {/* Fecha */}

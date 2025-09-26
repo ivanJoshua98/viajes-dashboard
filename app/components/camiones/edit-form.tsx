@@ -13,8 +13,12 @@ export default function EditCamionForm({ camion }: { camion: CamionForm }) {
   const updateCamionWithId = updateCamion.bind(null, camion.id);
   const [state, formAction] = useActionState(updateCamionWithId, initialState);
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   return (
-    <form action={ formAction }>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
 
         {/* Patente del camion */}
