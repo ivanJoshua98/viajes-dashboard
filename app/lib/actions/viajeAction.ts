@@ -165,9 +165,10 @@ export async function updateViaje (id: string, prevState: StateViajeForm, formDa
     const result = await sql`
       SELECT * FROM viajes
       WHERE fecha = ${fecha} AND 
-      fecha = ${fecha} AND
-      tipo_camion = ${tipo_camion} AND
-      camion = ${camion};
+        fecha = ${fecha} AND
+        tipo_camion = ${tipo_camion} AND
+        camion = ${camion} AND 
+        viajes.id != ${id};
     `;
     if (result.length > 0) {
       return {

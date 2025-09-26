@@ -19,12 +19,12 @@ export default async function TarifasTable () {
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
-                    <div className="mb-2 flex items-center">
-                      <DocumentCurrencyDollarIcon className="mr-2 rounded-full h-12 w-12"/>
-                      <p className="text-sm text-gray-50">{tarifa.zona_nombre}</p>
+                    <div className="mb-2 flex items-end">
+                      <DocumentCurrencyDollarIcon className="mr-2 rounded-full h-8 w-8"/>
+                      <p className="text-base text-gray-50">{tarifa.zona_nombre}</p>
                     </div>
-                    <p className="text-sm text-gray-50">{tarifa.tipo}</p>
-                    <p className="text-sm text-gray-50">${formatMoney(tarifa.monto_centavos)}</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Tipo de camión:</span> {tarifa.tipo}</p>
+                    <p className="text-sm text-gray-50"><span className="text-indigo-200">Monto:</span> ${formatMoney(tarifa.monto_centavos)}</p>
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
@@ -62,7 +62,7 @@ export default async function TarifasTable () {
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                    <DocumentCurrencyDollarIcon className="rounded-full h-12 w-12"/>
+                    <DocumentCurrencyDollarIcon className="rounded-full h-8 w-8"/>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {tarifa.zona_nombre}

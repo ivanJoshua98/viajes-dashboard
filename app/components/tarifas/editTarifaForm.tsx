@@ -13,20 +13,17 @@ export default function EditTarifaForm ( { tarifa }: { tarifa: Tarifa }) {
   const updateTarifaWithId = updateTarifa.bind(null, tarifa.id);
   const [state, formAction] = useActionState(updateTarifaWithId, initialState);
 
-  function resetAlerts () {
-    const montoError = document.getElementById('monto-error');
-    if ( montoError ) { montoError.innerHTML = '' };
-
-    const fieldsError = document.getElementById('fields-error');
-    if ( fieldsError ) { fieldsError.innerHTML = '' };
+  function resetAlert () {
+    state.message = '';
   }
 
   return (
-    <form action={ formAction } onChange={resetAlerts}>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
+
         {/* Zona */}
         <div className="mb-4">
-          <label htmlFor="zona" className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium">
             Zona
           </label>
           <div className="relative mt-2 rounded-md">
@@ -41,7 +38,7 @@ export default function EditTarifaForm ( { tarifa }: { tarifa: Tarifa }) {
 
         {/* Tipo */}
         <div className="mb-4">
-          <label htmlFor="tipo" className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium">
             Tipo de camión
           </label>
           <div className="relative mt-2 rounded-md">
@@ -67,7 +64,7 @@ export default function EditTarifaForm ( { tarifa }: { tarifa: Tarifa }) {
                 type="number"
                 step="0.01"
                 placeholder="Ingrese un monto en ARS"
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="monto-error"
                 defaultValue={tarifa.monto_centavos / 100}
               />

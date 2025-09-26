@@ -13,9 +13,14 @@ export default function EditTarifaForm ( { tarifaAdicional: tarifaAdicional }: {
   const updateTarifaAdicionalWithId = updateTarifaAdicional.bind(null, tarifaAdicional.id);
   const [state, formAction] = useActionState(updateTarifaAdicionalWithId, initialState);
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   return (
-    <form action={ formAction }>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
+
         {/* Cantidad extra de clientes */}
         <div className="mb-4">
           <label htmlFor="extra" className="mb-2 block text-sm font-medium">
@@ -44,7 +49,7 @@ export default function EditTarifaForm ( { tarifaAdicional: tarifaAdicional }: {
                 type="number"
                 step="0.01"
                 placeholder="Ingrese un monto en ARS"
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="monto-error"
                 defaultValue={tarifaAdicional.monto_centavos / 100}
               />

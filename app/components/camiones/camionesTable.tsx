@@ -19,10 +19,11 @@ export default async function CamionesTable() {
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
-                    <div className="mb-2 flex items-center">
-                      <TruckIcon className="mr-2 rounded-full h-12 w-12"/>
+                    <div className="mb-2 flex items-end">
+                      <TruckIcon className="mr-2 rounded-full h-8 w-8"/>
+                      <p className="text-sm text-gray-50">{camion.patente}</p>
                     </div>
-                    <p className="text-sm text-gray-50">{camion.patente}</p>
+                    
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
@@ -55,7 +56,7 @@ export default async function CamionesTable() {
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                    <TruckIcon className="rounded-full h-12 w-12"/>
+                    <TruckIcon className="rounded-full h-8 w-8"/>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {camion.patente}

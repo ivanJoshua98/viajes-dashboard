@@ -1,10 +1,4 @@
 
-export function formatDateToLocal ( date: Date ) {
-  return date.toLocaleString('es-AR', {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour12: false,
-    timeZone: 'America/Argentina/Buenos_Aires',
-  });
+export function formatDate ( date: Date ) {
+  return date.toISOString().split("T")[0];
 };

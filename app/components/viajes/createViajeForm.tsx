@@ -6,6 +6,7 @@ import { BoltIcon, CalculatorIcon, CalendarIcon, ChatBubbleBottomCenterIcon, Cur
 import Link from "next/link";
 import React, { useActionState, useEffect, useState } from "react";
 import { Button } from "@/app/components/button";
+import { formatDate } from "@/app/lib/utils/formatDateToLocal";
 
 export default function CreateViajeForm ({ 
   zonas, 
@@ -81,6 +82,10 @@ export default function CreateViajeForm ({
     }
   }
 
+  function resetAlert () {
+    state.message = '';
+  }
+
   useEffect(() => {
     restoreLastOptionSelected(zonaId);
     restoreLastOptionSelected(tipoId);
@@ -106,7 +111,7 @@ export default function CreateViajeForm ({
   }, [state?.success]);
 
   return (
-    <form action={ formAction } >
+    <form action={ formAction } onChange={resetAlert}>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
         
         {/* Fecha */}
@@ -120,9 +125,9 @@ export default function CreateViajeForm ({
                 id="fecha"
                 name="fecha"
                 type="date"
-                value={fecha.toISOString().split("T")[0]}
+                value={formatDate(fecha)}
                 onChange={(e) => setFecha(new Date(e.target.value))}
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm cursor-pointer"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="fecha-error"
               /> 
               <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-500" />
@@ -147,7 +152,7 @@ export default function CreateViajeForm ({
             <select
               id="zona"
               name="zona"
-              className="peer block w-full cursor-pointer rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+              className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
               value={zonaId}
               onChange={ e => setZonaId(e.target.value) }
               aria-describedby="zona-error"
@@ -182,7 +187,7 @@ export default function CreateViajeForm ({
             <select
               id="tipo"
               name="tipo"
-              className="peer block w-full cursor-pointer rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+              className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
               value={ tipoId }
               onChange={e => setTipoId(e.target.value)}
               aria-describedby="tipo-error"
@@ -223,7 +228,7 @@ export default function CreateViajeForm ({
                 placeholder="Ingrese una cantidad válida"
                 value={cajones}
                 onChange={e => setCajones(Number(e.target.value))}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="cajones-error"
               />
               <CalculatorIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -254,7 +259,7 @@ export default function CreateViajeForm ({
                 placeholder="Ingrese una cantidad válida"
                 value={cantClientes}
                 onChange={e => setCantClientes(Number(e.target.value))}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="cant-clientes-error"
               />
               <UserGroupIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -285,7 +290,7 @@ export default function CreateViajeForm ({
                 placeholder="Ingrese un monto en ARS"
                 value={montoCentavos / 100}
                 onChange={handleMontoChange}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="monto-error"
               />
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -315,7 +320,7 @@ export default function CreateViajeForm ({
                 placeholder="Ingrese alguna observacion"
                 value={observaciones}
                 onChange={e => setObservaciones(e.target.value)}
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="observaciones-error"
               />
               <ChatBubbleBottomCenterIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-500" />
@@ -340,7 +345,7 @@ export default function CreateViajeForm ({
             <select
               id="camion"
               name="camion"
-              className="peer block w-full cursor-pointer rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+              className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
               value={ camion }
               onChange={ e => setCamion(e.target.value) }
               aria-describedby="camion-error"
@@ -381,7 +386,7 @@ export default function CreateViajeForm ({
                 placeholder="Ingrese una cantidad válida"
                 value={litros}
                 onChange={e => setLitros(parseFloat(e.target.value))}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="litros-error"
               />
               <BoltIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -412,7 +417,7 @@ export default function CreateViajeForm ({
                 placeholder="Ingrese un kilometraje válido"
                 value={km}
                 onChange={e => setKm(parseFloat(e.target.value))}
-                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="km-error"
               />
               <MapIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />

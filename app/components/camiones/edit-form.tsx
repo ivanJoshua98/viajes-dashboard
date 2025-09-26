@@ -13,17 +13,14 @@ export default function EditCamionForm({ camion }: { camion: CamionForm }) {
   const updateCamionWithId = updateCamion.bind(null, camion.id);
   const [state, formAction] = useActionState(updateCamionWithId, initialState);
 
-  function resetAlerts () {
-    const patenteError = document.getElementById('patente-error');
-    if ( patenteError ) { patenteError.innerHTML = '' };
-
-    const fieldsError = document.getElementById('fields-error');
-    if ( fieldsError ) { fieldsError.innerHTML = '' };
+  function resetAlert () {
+    state.message = '';
   }
 
   return (
-    <form action={ formAction } onChange={resetAlerts}>
+    <form action={ formAction } onChange={ resetAlert }>
       <div className="rounded-md bg-gray-800 p-4 md:p-6">
+
         {/* Patente del camion */}
         <div className="mb-4">
           <label htmlFor="patente" className="mb-2 block text-sm font-medium">
@@ -37,7 +34,7 @@ export default function EditCamionForm({ camion }: { camion: CamionForm }) {
                 type="text"
                 defaultValue={camion.patente}
                 placeholder="Ingrese una patente valida"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="patente-error"
               />
               <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-500" />
@@ -52,6 +49,8 @@ export default function EditCamionForm({ camion }: { camion: CamionForm }) {
             ))}
           </div>
         </div>
+
+        {/* Alerts */}
         <div id="fields-error" aria-live="polite" aria-atomic="true">
           {state.message ? 
             <p className="mt-2 text-sm text-red-500"> {state.message} </p> 
