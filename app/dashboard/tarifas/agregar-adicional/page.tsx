@@ -15,7 +15,7 @@ export default async function Page () {
           { label: 'Tarifas', href: '/dashboard/tarifas' },
           {
             label: 'Agregar tarifa adicional',
-            href: '/dashboard/tarifa/agregar-adicional',
+            href: '/dashboard/tarifas/agregar-adicional',
             active: true,
           },
         ]}

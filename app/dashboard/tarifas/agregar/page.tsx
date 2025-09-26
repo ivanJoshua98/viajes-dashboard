@@ -22,7 +22,7 @@ export default async function Page () {
           { label: 'Tarifas', href: '/dashboard/tarifas' },
           {
             label: 'Agregar tarifa',
-            href: '/dashboard/tarifa/agregar',
+            href: '/dashboard/tarifas/agregar',
             active: true,
           },
         ]}

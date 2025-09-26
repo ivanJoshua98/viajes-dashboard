@@ -25,7 +25,7 @@ export default async function Page (props: { params: Promise<{ id: string }> }) 
             { label: 'Zonas', href: '/dashboard/zonas' },
             {
               label: 'Editar zona',
-              href: `/dashboard/zona/${id}/editar`,
+              href: `/dashboard/zonas/${id}/editar`,
               active: true,
             },
           ]}

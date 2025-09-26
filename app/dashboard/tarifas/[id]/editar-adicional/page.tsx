@@ -21,7 +21,7 @@ export default async function Page (props: { params: Promise<{ id: string}> }) {
           { label: 'Tarifas', href: '/dashboard/tarifas' },
           {
             label: 'Editar tarifa adicional',
-            href: `/dashboard/tarifa/${id}/editar-adicional`,
+            href: `/dashboard/tarifas/${id}/editar-adicional`,
             active: true,
           },
         ]}
