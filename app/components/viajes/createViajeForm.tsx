@@ -6,6 +6,7 @@ import { BoltIcon, CalculatorIcon, CalendarIcon, ChatBubbleBottomCenterIcon, Cur
 import Link from "next/link";
 import React, { useActionState, useEffect, useState } from "react";
 import { Button } from "@/app/components/button";
+import { formatDate } from "@/app/lib/utils/formatDateToLocal";
 
 export default function CreateViajeForm ({ 
   zonas, 
@@ -120,7 +121,7 @@ export default function CreateViajeForm ({
                 id="fecha"
                 name="fecha"
                 type="date"
-                value={fecha.toISOString().split("T")[0]}
+                value={formatDate(fecha)}
                 onChange={(e) => setFecha(new Date(e.target.value))}
                 className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="fecha-error"

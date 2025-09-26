@@ -6,6 +6,7 @@ import { CalendarIcon, FlagIcon, IdentificationIcon, CalculatorIcon, UserGroupIc
 import Link from "next/link";
 import { useActionState, useState, useEffect } from "react";
 import { Button } from "@/app/components/button";
+import { formatDate } from "@/app/lib/utils/formatDateToLocal";
 
 export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, tarifasAdicionales }: { viaje: Viaje, zonas: Zona[], tipos: TipoCamion[], camiones: Camion[], tarifas: Tarifa[], tarifasAdicionales: TarifaAdicional[] }) {
 
@@ -76,7 +77,7 @@ export default function EditViajeForm ({viaje, zonas, tipos, camiones, tarifas, 
                 id="fecha"
                 name="fecha"
                 type="date"
-                defaultValue={viaje.fecha.toISOString().split("T")[0]}
+                defaultValue={formatDate(viaje.fecha)}
                 className="peer block w-full rounded-md py-2 pl-10 text-sm outline placeholder:text-gray-500 focus:border-sky-500 focus:outline focus:outline-sky-500"
                 aria-describedby="fecha-error"
               /> 

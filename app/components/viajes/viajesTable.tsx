@@ -2,7 +2,7 @@ import { fetchFilteredViajes } from "@/app/lib/data/fetchDataViajes";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { UpdateViaje } from "@/app/components/viajes/buttons";
 import { formatMoney } from "@/app/lib/utils/formatMoney";
-import { formatDateToLocal } from "@/app/lib/utils/formatDateToLocal";
+import { formatDate } from "@/app/lib/utils/formatDateToLocal";
 import { DeleteViaje } from "@/app/components/viajes/deleteButton";
 
 export default async function ViajesTable ({ query, currentPage }: {query: string, currentPage: number}) {
@@ -23,7 +23,7 @@ export default async function ViajesTable ({ query, currentPage }: {query: strin
                   <div>
                     <div className="mb-2 flex items-center">
                       <PencilSquareIcon className="mr-2 rounded-full h-8 w-8"/>
-                      <p className="text-base text-gray-50">{ formatDateToLocal(viaje.fecha) }</p>
+                      <p className="text-base text-gray-50">{ formatDate(viaje.fecha) }</p>
                     </div>
                     <p className="text-sm text-gray-50"><span className="text-indigo-200">Zona: </span>{ viaje.zona_nombre }</p>
                     <p className="text-sm text-gray-50"><span className="text-indigo-200">Tipo de camion: </span>{ viaje.tipo_camion_nombre }</p>
@@ -91,7 +91,7 @@ export default async function ViajesTable ({ query, currentPage }: {query: strin
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
                   <td className="whitespace-nowrap px-3 py-3">
-                    { formatDateToLocal(viaje.fecha) }
+                    { formatDate(viaje.fecha) }
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {viaje.zona_nombre}
