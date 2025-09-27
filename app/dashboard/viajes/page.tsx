@@ -1,7 +1,7 @@
 import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
 import Pagination from "@/app/components/pagination";
 import Search from "@/app/components/search";
-import { AddViaje } from "@/app/components/viajes/buttons";
+import { AddViaje, GenerateReport } from "@/app/components/viajes/buttons";
 import ViajesTable from "@/app/components/viajes/viajesTable";
 import { fetchViajesPages } from "@/app/lib/data/fetchDataViajes";
 import { Metadata } from "next"
@@ -31,6 +31,7 @@ export default async function Viajes ( props: {
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Buscar viajes..." />
         <AddViaje />
+        <GenerateReport />
       </div>
       {<Suspense key={query + currentPage} fallback={<CamionesTableSkeleton />}>
         <ViajesTable query={query} currentPage={currentPage} />
