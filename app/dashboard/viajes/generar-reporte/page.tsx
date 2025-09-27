@@ -32,7 +32,6 @@ export default async function Page (props: {
         <DatesInput />
       </div>
       {<Suspense key={startDate + endDate} fallback={<CamionesTableSkeleton />}>
-        <ExportViajesTable />
         <ViajesReportTable startDate={startDate} endDate={endDate} />
       </Suspense>}
     </div>
