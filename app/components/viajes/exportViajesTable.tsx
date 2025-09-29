@@ -55,6 +55,17 @@ function exportViajes(viajes: Viaje[]) {
   };
   worksheet[`E${netoRowIndex}`] = { t: 's', v: 'Neto N2' };
 
+  // Se agrega un ancho personalizado a las columnas
+  worksheet['!cols'] = [
+    { wch: 12 }, // 12 caracteres de ancho
+    { wch: 12 }, 
+    { wch: 16 }, 
+    { wch: 12 }, 
+    { wch: 12 }, 
+    { wch: 22 }, 
+    { wch: 30}
+  ];
+
   // Actualizar el rango de celdas de la hoja
   const range = XLSX.utils.decode_range(worksheet['!ref'] || '');
   range.e.r = netoRowIndex - 1;
