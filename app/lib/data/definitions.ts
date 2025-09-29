@@ -52,3 +52,10 @@ export type TarifaAdicional = {
   cantidad: number;
   monto_centavos: number;
 }
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+};
