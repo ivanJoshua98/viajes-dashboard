@@ -153,7 +153,6 @@ export async function fetchFilteredViajesByDates (startDate: string, endDate: st
       viajes.fecha <= ${endDate} 
     ORDER BY viajes.fecha DESC
   `;
-  console.log(`Viajes encontrados con las fechas ${startDate}, ${endDate}`);
   return viajes;
   } catch (error) {
     console.log('Database Error:', error);
