@@ -5,7 +5,7 @@ export default function ViajesLogo() {
     <div
       className={'flex flex-row items-center leading-none text-gray-50'}
     >
-      <TruckIcon className="h-12 w-12" />
+      <TruckIcon className="h-[44px] w-[44px]" />
       <p className="text-[44px]">Viajes</p>
     </div>
   );
