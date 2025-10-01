@@ -159,3 +159,34 @@ export async function fetchFilteredViajesByDates (startDate: string, endDate: st
     throw new Error('Error al obtener los viajes');
   }
 }
+
+export async function fetchLatestViajes() {
+  try {
+    const latestInvoices = await sql<Viaje[]>`
+      SELECT viajes.id AS viaje_id, 
+             fecha, 
+             zona AS zona_id, 
+             zonas.nombre AS zona_nombre, 
+             tipo_camion AS tipo_id, 
+             tipos_camion.tipo AS tipo_camion_nombre, 
+             cajones, 
+             cant_clientes, 
+             valor_flete_centavos, 
+             observaciones, 
+             camion AS camion_id, 
+             camiones.patente AS camion_patente, 
+             litros_combustible, 
+             kilometraje 
+      FROM viajes 
+      JOIN zonas ON viajes.zona = zonas.id 
+      JOIN tipos_camion ON viajes.tipo_camion = tipos_camion.id 
+      JOIN camiones ON viajes.camion = camiones.id
+      ORDER BY viajes.fecha DESC
+      LIMIT 5;
+    `;
+    return latestInvoices;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch the latest invoices.');
+  }
+}
