@@ -59,3 +59,15 @@ export type User = {
   email: string;
   password: string;
 };
+
+
+export type CardsData = {
+  cant_viajes_mes: number;
+  ingresos_viajes_mes: number;
+  id_camion_mas_usado: string;
+  patente_camion_mas_usado: string;
+  usos_camion_mes: number;
+  id_zona_mas_visitada: string;
+  nombre_zona_mas_visitada: string;
+  viajes_zona_mes: number;
+}
