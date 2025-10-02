@@ -81,9 +81,6 @@ export function CamionesTableSkeleton() {
               <TableRowSkeleton />
               <TableRowSkeleton />
               <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
             </tbody>
           </table>
         </div>
@@ -161,4 +158,29 @@ export function LatestViajesSkeleton() {
       </div>
     </div>
   );
+}
+
+export function TiposDeCamionesTableSkeleton () {
+  return (
+    <div className="mt-6 flex flex-col space-y-2">
+      <div className="flex h-[48px] items-center gap-2 rounded-md bg-sky-800 px-3">
+        <div className="whitespace-nowrap px-3 py-3">
+          <div className="h-6 w-32 rounded bg-gray-500"></div>
+        </div>
+      </div>
+
+      <div className="flex h-[48px] items-center gap-2 rounded-md bg-sky-800 px-3">
+        <div className="whitespace-nowrap px-3 py-3">
+          <div className="h-6 w-32 rounded bg-gray-500"></div>
+        </div>
+      </div>
+
+      <div className="flex h-[48px] items-center gap-2 rounded-md bg-sky-800 px-3">
+        <div className="whitespace-nowrap px-3 py-3">
+          <div className="h-6 w-32 rounded bg-gray-500"></div>
+        </div>
+      </div>
+
+    </div>
+  )
 }
