@@ -1,4 +1,4 @@
-import { CamionesTableSkeleton, ZonaTableSkeleton } from "@/app/components/dashboard/skeletons";
+import { ZonaTableSkeleton } from "@/app/components/dashboard/skeletons";
 import { AddZona } from "@/app/components/zonas/buttons";
 import ZonasTable from "@/app/components/zonas/zonasTable";
 import { Metadata } from "next"

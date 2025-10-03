@@ -1,4 +1,4 @@
-import { CamionesTableSkeleton, TarifasAdicionalesTableSkeleton, TarifasTableSkeleton } from "@/app/components/dashboard/skeletons";
+import { TarifasAdicionalesTableSkeleton, TarifasTableSkeleton } from "@/app/components/dashboard/skeletons";
 import { AddTarifa, AddTarifaAdicional } from "@/app/components/tarifas/buttons";
 import TarifasAdicionalesTable from "@/app/components/tarifas/tarifasAdicionalesTable";
 import TarifasTable from "@/app/components/tarifas/tarifasTable";
