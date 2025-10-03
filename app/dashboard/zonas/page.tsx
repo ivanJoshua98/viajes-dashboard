@@ -1,4 +1,4 @@
-import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
+import { CamionesTableSkeleton, ZonaTableSkeleton } from "@/app/components/dashboard/skeletons";
 import { AddZona } from "@/app/components/zonas/buttons";
 import ZonasTable from "@/app/components/zonas/zonasTable";
 import { Metadata } from "next"
@@ -17,7 +17,7 @@ export default function Zonas () {
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <AddZona />
       </div>
-      {<Suspense fallback={<CamionesTableSkeleton />}>
+      {<Suspense fallback={<ZonaTableSkeleton />}>
         <ZonasTable />
       </Suspense>}
     </div>

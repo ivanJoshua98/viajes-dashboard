@@ -335,3 +335,48 @@ export function TarifasAdicionalesTableSkeleton () {
     </div>
   );
 }
+
+export function ZonaTableSkeleton () {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="inline-block min-w-full align-middle">
+        <div className="rounded-lg bg-sky-800 p-2 md:pt-0">
+          <div className="md:hidden">
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+          </div>
+          <table className="hidden min-w-full text-gray-50 md:table">
+            <thead className="rounded-lg text-left text-sm font-normal">
+              <tr>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Nombre
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Region
+                </th>
+                <th
+                  scope="col"
+                  className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6"
+                >
+                  <span className="sr-only">Editar</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white">
+              <TarifaAdicionalRowSkeleton />
+              <TarifaAdicionalRowSkeleton />
+              <TarifaAdicionalRowSkeleton />
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
