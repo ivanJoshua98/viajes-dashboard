@@ -1,4 +1,4 @@
-import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
+import { ViajesTableSkeleton } from "@/app/components/dashboard/skeletons";
 import Pagination from "@/app/components/pagination";
 import Search from "@/app/components/search";
 import { AddViaje, GenerateReport } from "@/app/components/viajes/buttons";
@@ -33,8 +33,8 @@ export default async function Viajes ( props: {
         <AddViaje />
         <GenerateReport />
       </div>
-      {<Suspense key={query + currentPage} fallback={<CamionesTableSkeleton />}>
-        <ViajesTable query={query} currentPage={currentPage} />
+      {<Suspense key={query + currentPage} fallback={<ViajesTableSkeleton />}>
+        <ViajesTable query={query} currentPage={currentPage} /> 
       </Suspense>}
       <div className="mt-5 flex w-full justify-center">
         { <Pagination totalPages={totalPages} /> }

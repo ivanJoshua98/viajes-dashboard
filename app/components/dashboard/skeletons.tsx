@@ -380,3 +380,126 @@ export function ZonaTableSkeleton () {
     </div>
   );
 }
+
+export function ViajeRowSkeleton() {
+  return (
+    <tr className="w-full bg-gray-800 border-b border-gray-100 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+      {/* Fecha */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Zona */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Tipo de camion */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Cajones */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Clientes */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Valor del flete */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Observaciones */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-32 rounded bg-gray-500"></div>
+      </td>
+      {/* Camion */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Litros */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-24 rounded bg-gray-500"></div>
+      </td>
+      {/* Kilometraje */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-16 rounded bg-gray-500"></div>
+      </td>
+      {/* Botones */}
+      <td className="whitespace-nowrap py-3 pl-6 pr-3">
+        <div className="flex justify-end gap-3">
+          <div className="h-[38px] w-[38px] rounded bg-gray-500"></div>
+          <div className="h-[38px] w-[38px] rounded bg-gray-500"></div>
+        </div>
+      </td>
+    </tr>
+  );
+}
+
+export function ViajesTableSkeleton () {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="inline-block min-w-full align-middle">
+        <div className="rounded-lg bg-sky-800 p-2 md:pt-0">
+          <div className="md:hidden">
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+          </div>
+          <table className="hidden min-w-full text-gray-50 md:table">
+            <thead className="rounded-lg text-left text-sm font-normal">
+              <tr>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Fecha
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Zona
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Tipo de camión
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Cajones
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Clientes
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Valor del flete
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Observaciones
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Camión
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Litros de combustible
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Kilometraje
+                </th>
+                <th
+                  scope="col"
+                  className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6"
+                >
+                  <span className="sr-only">Editar</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white">
+              <ViajeRowSkeleton />
+              <ViajeRowSkeleton />
+              <ViajeRowSkeleton />
+              <ViajeRowSkeleton />
+              <ViajeRowSkeleton />
+              <ViajeRowSkeleton />
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
