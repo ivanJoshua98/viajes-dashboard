@@ -184,3 +184,154 @@ export function TiposDeCamionesTableSkeleton () {
     </div>
   )
 }
+
+export function TarifaRowSkeleton() {
+  return (
+    <tr className="w-full bg-gray-800 border-b border-gray-100 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+      {/* Icono */}
+      <td className="relative overflow-hidden whitespace-nowrap py-3 pl-6 pr-3">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-full bg-gray-500"></div>
+        </div>
+      </td>
+      {/* Zona */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-32 rounded bg-gray-500"></div>
+      </td>
+      {/* Tipo de camion */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-32 rounded bg-gray-500"></div>
+      </td>
+      {/* Monto */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-32 rounded bg-gray-500"></div>
+      </td>
+      {/* Botones */}
+      <td className="whitespace-nowrap py-3 pl-6 pr-3">
+        <div className="flex justify-end gap-3">
+          <div className="h-[38px] w-[38px] rounded bg-gray-500"></div>
+        </div>
+      </td>
+    </tr>
+  );
+}
+
+export function TarifasTableSkeleton () {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="inline-block min-w-full align-middle">
+        <div className="rounded-lg bg-sky-800 p-2 md:pt-0">
+          <div className="md:hidden">
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+          </div>
+          <table className="hidden min-w-full text-gray-50 md:table">
+            <thead className="rounded-lg text-left text-sm font-normal">
+              <tr>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Zona
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Tipo de camión
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Monto
+                </th>
+                <th
+                  scope="col"
+                  className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6"
+                >
+                  <span className="sr-only">Editar</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white">
+              <TarifaRowSkeleton />
+              <TarifaRowSkeleton />
+              <TarifaRowSkeleton />
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function TarifaAdicionalRowSkeleton() {
+  return (
+    <tr className="w-full bg-gray-800 border-b border-gray-100 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+      {/* Icono */}
+      <td className="relative overflow-hidden whitespace-nowrap py-3 pl-6 pr-3">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-full bg-gray-500"></div>
+        </div>
+      </td>
+      {/* Tipo de camion */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-32 rounded bg-gray-500"></div>
+      </td>
+      {/* Monto */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-6 w-32 rounded bg-gray-500"></div>
+      </td>
+      {/* Botones */}
+      <td className="whitespace-nowrap py-3 pl-6 pr-3">
+        <div className="flex justify-end gap-3">
+          <div className="h-[38px] w-[38px] rounded bg-gray-500"></div>
+        </div>
+      </td>
+    </tr>
+  );
+}
+
+export function TarifasAdicionalesTableSkeleton () {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="inline-block min-w-full align-middle">
+        <div className="rounded-lg bg-sky-800 p-2 md:pt-0">
+          <div className="md:hidden">
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+            <CamionesMobileSkeleton />
+          </div>
+          <table className="hidden min-w-full text-gray-50 md:table">
+            <thead className="rounded-lg text-left text-sm font-normal">
+              <tr>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Extra de clientes
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Monto
+                </th>
+                <th
+                  scope="col"
+                  className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6"
+                >
+                  <span className="sr-only">Editar</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white">
+              <TarifaAdicionalRowSkeleton />
+              <TarifaAdicionalRowSkeleton />
+              <TarifaAdicionalRowSkeleton />
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}

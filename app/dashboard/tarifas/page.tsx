@@ -1,4 +1,4 @@
-import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
+import { CamionesTableSkeleton, TarifasAdicionalesTableSkeleton, TarifasTableSkeleton } from "@/app/components/dashboard/skeletons";
 import { AddTarifa, AddTarifaAdicional } from "@/app/components/tarifas/buttons";
 import TarifasAdicionalesTable from "@/app/components/tarifas/tarifasAdicionalesTable";
 import TarifasTable from "@/app/components/tarifas/tarifasTable";
@@ -18,8 +18,8 @@ export default function Tarifas () {
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <AddTarifa />
       </div>
-      {<Suspense fallback={<CamionesTableSkeleton />}>
-        <TarifasTable />
+      {<Suspense fallback={<TarifasTableSkeleton />}>
+        <TarifasTable /> 
       </Suspense>}
       <div className="mt-8 flex w-full items-center justify-between">
         <h1 className={'text-2xl'}>Tarifas Adicionales</h1>
@@ -27,8 +27,8 @@ export default function Tarifas () {
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <AddTarifaAdicional />
       </div>
-      {<Suspense fallback={<CamionesTableSkeleton />}>
-        <TarifasAdicionalesTable />
+      {<Suspense fallback={<TarifasAdicionalesTableSkeleton />}>
+        <TarifasAdicionalesTable /> 
       </Suspense>}
     </div>
   );
