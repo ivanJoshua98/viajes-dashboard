@@ -1,6 +1,6 @@
 import CamionesTable from "@/app/components/camiones/camionesTable";
 import { AddCamion } from "@/app/components/camiones/buttons";
-import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
+import { CamionesTableSkeleton, TiposDeCamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import TiposCamionTable from "@/app/components/camiones/tiposCamionTable";
@@ -21,7 +21,7 @@ export default function Camiones () {
         <AddCamion />
       </div>
       {<Suspense fallback={<CamionesTableSkeleton />}>
-        <CamionesTable />
+        <CamionesTable /> 
       </Suspense>}
       <div className="flex mt-8 w-full items-center justify-between">
         <h1 className={'text-2xl'}>Tipos de camión</h1>
@@ -29,9 +29,9 @@ export default function Camiones () {
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <AddTipoCamionBtn />
       </div>
-      {<Suspense>
-        <TiposCamionTable />
-      </Suspense>}      
+      <Suspense fallback={ <TiposDeCamionesTableSkeleton /> }>
+        <TiposCamionTable /> 
+      </Suspense>
     </div>
   );
 }
