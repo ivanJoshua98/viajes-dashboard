@@ -1,6 +1,5 @@
 import { CamionesTableSkeleton } from "@/app/components/dashboard/skeletons";
 import DatesInput from "@/app/components/viajes/datesInput";
-import ExportViajesTable from "@/app/components/viajes/exportViajesTable";
 import ViajesReportTable from "@/app/components/viajes/viajesReportTable";
 import { formatDate } from "@/app/lib/utils/formatDateToLocal";
 import { Metadata } from "next";
