@@ -5,20 +5,8 @@ import { Button } from "@/app/components/button"
 import { formatDate } from "@/app/lib/utils/formatDateToLocal";
 import * as XLSX from 'xlsx';
 import { Viaje } from "@/app/lib/data/definitions";
-import { formatMoney } from "@/app/lib/utils/formatMoney";
 
 export default function exportViajesTable ( { viajes }: { viajes: Viaje[] } ) {
-
-  // function exportTable () { 
-  //   const table = document.getElementById('report-viajes-table')?.outerHTML;
-  //   if ( table ){
-  //     const url = 'data:application/vnd.ms-excel,' + encodeURIComponent(table);
-  //     const a = document.createElement('a');
-  //     a.href = url;
-  //     a.download = `viajes-reporte-${formatDate(new Date)}.xls`;
-  //     a.click();
-  //   }
-  // }
 
 function exportViajes(viajes: Viaje[]) {
   const data = viajes.map((viaje) => ({

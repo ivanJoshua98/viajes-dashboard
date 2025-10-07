@@ -23,7 +23,7 @@ describe('ZonaFormSchema', () => {
   });
 
   it('falla si el nombre no es string', () => {
-    const data = { id: '1', nombre: 123 as any, region: 'Region test' };
+    const data = { id: '1', nombre: 123, region: 'Region test' };
     const result = ZonaFormSchema.safeParse(data);
     expect(result.success).toBe(false);
     expect(result.error?.flatten().fieldErrors.nombre).toContain('Por favor ingrese un nombre válido.');
@@ -44,7 +44,7 @@ describe('ZonaFormSchema', () => {
   });
 
   it('falla si la región no es string', () => {
-    const data = { id: '1', nombre: '', region: 123 as any };
+    const data = { id: '1', nombre: '', region: 123 };
     const result = ZonaFormSchema.safeParse(data);
     expect(result.success).toBe(false);
     expect(result.error?.flatten().fieldErrors.region).toContain('Por favor ingrese una región válida.');

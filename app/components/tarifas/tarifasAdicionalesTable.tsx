@@ -1,4 +1,4 @@
-import { fetchTarifas, fetchTarifasAdicionales } from "@/app/lib/data/fetchDataTarifas";
+import { fetchTarifasAdicionales } from "@/app/lib/data/fetchDataTarifas";
 import { UpdateTarifa, UpdateTarifaAdicional } from "./buttons";
 import { DocumentCurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { formatMoney } from "@/app/lib/utils/formatMoney";

@@ -23,7 +23,7 @@ describe('CamionFormSchema', () => {
   });
 
   it('falla si la patente no es string', () => {
-    const data = { id: '1', patente: 1234567 as any };
+    const data = { id: '1', patente: 1234567 };
     const result = CamionFormSchema.safeParse(data);
     expect(result.success).toBe(false);
     expect(result.error?.flatten().fieldErrors.patente).toContain('Por favor ingrese una patente válida.');

@@ -2,7 +2,6 @@ import { CardsData } from '@/app/lib/data/definitions';
 import { fetchCardData } from '@/app/lib/data/fetchDataCards';
 import { formatMoney } from '@/app/lib/utils/formatMoney';
 import {
-  BanknotesIcon,
   TruckIcon,
   MapIcon,
   MapPinIcon,
