@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import ViajesLogo from '../components/viajes-logo';
 
 export const metadata: Metadata = {
-  title: 'Log In'
+  title: 'Acceso'
 };
  
 export default function LoginPage() {
